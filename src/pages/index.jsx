@@ -4,11 +4,14 @@ import { FiChevronUp } from 'react-icons/fi';
 import { MenuButton } from '../component/menuButton';
 import { Profile } from '../component/profile';
 import { Technique } from '../component/technique';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 const menu = ['Intro & Profile', 'Technique', 'Career', 'Contect'];
 
 export default function Home() {
+  const profileFocusRef = useRef(null);
+  const techniqueFocusRef = useRef(null);
+
   const [positionY, setPositionY] = useState(0);
   const [currentItem, setCurrentItem] = useState('home');
 
@@ -23,35 +26,39 @@ export default function Home() {
   const moveItem = (item) => {
     switch (item) {
       case 'Intro & Profile':
-        return window.scrollTo({
-          top: 955,
-          left: 0,
+        setCurrentItem('Intro & Profile');
+        return profileFocusRef.current?.scrollIntoView({
           behavior: 'smooth',
+          block: 'start',
         });
       case 'Technique':
-        return window.scrollTo({
-          top: 1848,
-          left: 0,
+        setCurrentItem('Technique');
+        return techniqueFocusRef.current?.scrollIntoView({
           behavior: 'smooth',
+          block: 'start',
         });
       case 'home':
+        setCurrentItem('home');
         return window.scrollTo({
           top: 0,
           left: 0,
           behavior: 'smooth',
         });
       default:
-        return console.log(window.scrollY, 'window.scrollY');
+        return console.log(window.scrollY, 'window.scrollY1');
     }
   };
 
   const changeNavBar = useMemo(() => {
-    if (positionY > 940 && positionY < 1840) {
-      setCurrentItem('Intro & Profile');
-    } else if (positionY >= 1840) {
-      setCurrentItem('Technique');
-    } else {
+    const profileY = profileFocusRef?.current?.offsetTop;
+    const techniqueY = techniqueFocusRef?.current?.offsetTop;
+
+    if (positionY < 500) {
       setCurrentItem('home');
+    } else if (profileY - 200 < positionY && positionY < techniqueY - 200) {
+      setCurrentItem('Intro & Profile');
+    } else if (techniqueY - 200 < positionY) {
+      setCurrentItem('Technique');
     }
     return (
       <BtnWrapper Point={positionY}>
@@ -93,10 +100,10 @@ export default function Home() {
       <NavBar>{changeNavBar}</NavBar>
 
       <ContentsWrapper>
-        <Content>
+        <Content ref={profileFocusRef}>
           <Profile />
         </Content>
-        <Content>
+        <Content ref={techniqueFocusRef}>
           <Technique />
         </Content>
       </ContentsWrapper>
@@ -106,8 +113,9 @@ export default function Home() {
 
 const Wrapper = styled.div`
   min-height: 100vh;
-  padding-top: 140px;
+  padding: 140px 0;
   min-width: 1400px;
+  margin: auto;
 `;
 
 const ProfileWrapper = styled.div`
@@ -122,6 +130,7 @@ const Title = styled.h1`
 `;
 
 const NavBar = styled.div`
+  width: 100%;
   position: sticky;
   top: 0px;
 `;
@@ -132,7 +141,7 @@ const BtnWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${({ Point }) => (Point > 400 ? 'black' : 'none')};
-  transition: 0.7s;
+  transition: 0.3s;
 `;
 
 const ContentsWrapper = styled.div`
@@ -141,6 +150,8 @@ const ContentsWrapper = styled.div`
   justify-content: center;
   width: 100%;
   padding-top: 500px;
+  max-width: 1920px;
+  margin: auto;
 `;
 
 const Content = styled.div`
