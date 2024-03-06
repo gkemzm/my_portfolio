@@ -6,6 +6,7 @@ const info = {
   phone: '010-5197-9336',
   email: 'gkemzm@gmail.com',
   velog: 'https://velog.io/@pbs1014/posts',
+  education: '중원대학교 컴퓨터공학과 졸업(4년)',
 };
 
 export const Profile = () => {
@@ -24,6 +25,7 @@ export const Profile = () => {
             >
               VELOG : {info.velog}
             </InfoText>
+            <InfoText>EDUCATION : {info.education}</InfoText>
           </ProfileWrapper>
           <AboutWrapper>
             <Title>About Me</Title>

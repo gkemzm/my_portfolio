@@ -5,7 +5,9 @@ export const Technique = () => {
     <Wrapper>
       <ContentWrapper>
         <Title>Stack</Title>
-        <ContentBox></ContentBox>
+        <ContentBox>
+          <></>
+        </ContentBox>
       </ContentWrapper>
     </Wrapper>
   );
@@ -21,6 +23,12 @@ const Wrapper = styled.div`
 const Title = styled.div`
   font-size: 36px;
   line-height: 48px;
+`;
+
+const SubTitle = styled.div`
+  font-size: 28px;
+  line-height: 48px;
+  font-weight: bold;
 `;
 
 const ContentWrapper = styled.div`
