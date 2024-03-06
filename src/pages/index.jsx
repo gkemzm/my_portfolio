@@ -1,9 +1,11 @@
 import { Inter } from 'next/font/google';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { FiChevronUp } from 'react-icons/fi';
 import { MenuButton } from '../component/menuButton';
 import { Profile } from '../component/profile';
 import { Technique } from '../component/technique';
+import { Carrer } from '../component/career';
+import { Contect } from '../component/contect';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 const menu = ['Intro & Profile', 'Technique', 'Career', 'Contect'];
@@ -11,6 +13,8 @@ const menu = ['Intro & Profile', 'Technique', 'Career', 'Contect'];
 export default function Home() {
   const profileFocusRef = useRef(null);
   const techniqueFocusRef = useRef(null);
+  const carrerFocusRef = useRef(null);
+  const contectFocusRef = useRef(null);
 
   const [positionY, setPositionY] = useState(0);
   const [currentItem, setCurrentItem] = useState('home');
@@ -37,6 +41,18 @@ export default function Home() {
           behavior: 'smooth',
           block: 'start',
         });
+      case 'Career':
+        setCurrentItem('Career');
+        return carrerFocusRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      case 'Contect':
+        setCurrentItem('Contect');
+        return contectFocusRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
       case 'home':
         setCurrentItem('home');
         return window.scrollTo({
@@ -45,24 +61,36 @@ export default function Home() {
           behavior: 'smooth',
         });
       default:
-        return console.log(window.scrollY, 'window.scrollY1');
+        setCurrentItem('home');
+        return window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        });
     }
   };
 
   const changeNavBar = useMemo(() => {
     const profileY = profileFocusRef?.current?.offsetTop;
     const techniqueY = techniqueFocusRef?.current?.offsetTop;
+    const carrerY = carrerFocusRef?.current?.offsetTop;
+    const contectY = contectFocusRef?.current?.offsetTop;
 
     if (positionY < 500) {
       setCurrentItem('home');
     } else if (profileY - 200 < positionY && positionY < techniqueY - 200) {
       setCurrentItem('Intro & Profile');
-    } else if (techniqueY - 200 < positionY) {
+    } else if (techniqueY - 200 < positionY && positionY < carrerY - 200) {
       setCurrentItem('Technique');
+    } else if (carrerY - 200 < positionY && positionY < contectY - 200) {
+      setCurrentItem('Career');
+    } else if (contectY - 200 < positionY) {
+      setCurrentItem('Contect');
     }
+
     return (
-      <BtnWrapper Point={positionY}>
-        {positionY > 500 && positionY ? (
+      <BtnWrapper Point={positionY - 200}>
+        {positionY > 600 && positionY ? (
           <HomeButton onClick={() => moveItem('home')}>
             <FiChevronUp width={100} height={100} color="white" />
           </HomeButton>
@@ -96,6 +124,7 @@ export default function Home() {
     <Wrapper>
       <ProfileWrapper>
         <Title>Front-end Portfolio</Title>
+        <Name>Park Bum Soo</Name>
       </ProfileWrapper>
       <NavBar>{changeNavBar}</NavBar>
 
@@ -106,10 +135,31 @@ export default function Home() {
         <Content ref={techniqueFocusRef}>
           <Technique />
         </Content>
+        <Content ref={carrerFocusRef}>
+          <Carrer />
+        </Content>
+        <Content ref={contectFocusRef}>
+          <Contect />
+        </Content>
       </ContentsWrapper>
+
+      <Fotter Point={positionY - 200}>
+        <ForrterContent Point={positionY - 200}>
+          Park BumSoo | Front-end Portfolio | Email : gkemzm@gmail.com
+        </ForrterContent>
+      </Fotter>
     </Wrapper>
   );
 }
+
+const show = keyframes`
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+`;
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -120,19 +170,44 @@ const Wrapper = styled.div`
 
 const ProfileWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding-bottom: 140px;
+  padding-bottom: 80px;
 `;
 
 const Title = styled.h1`
   font-family: 'Dongle_L';
-  font-size: 72px;
+  font-size: 96px;
+  animation: ${show} 1s 0s 1 linear alternate;
+`;
+
+const Name = styled.h2`
+  font-family: 'Dongle_L';
+  font-size: 96px;
+  opacity: 0;
+  animation-name: show;
+  animation: ${show} 1s 1s 1 linear alternate;
+  animation-fill-mode: both;
 `;
 
 const NavBar = styled.div`
   width: 100%;
   position: sticky;
   top: 0px;
+
+  animation-name: fadeout;
+  animation: fadeout 1s 2s 1 linear alternate;
+  animation-fill-mode: both;
+
+  @keyframes fadeout {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 const BtnWrapper = styled.div`
@@ -163,4 +238,23 @@ const HomeButton = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+`;
+
+const Fotter = styled.div`
+  position: fixed;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  background-color: ${({ Point }) => (Point > 400 ? 'black' : 'none')};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+`;
+
+const ForrterContent = styled.p`
+  display: ${({ Point }) => (Point > 400 ? 'grid' : 'none')};
+  color: white;
+  font-family: 'Dongle L';
+  font-size: 20px;
 `;
