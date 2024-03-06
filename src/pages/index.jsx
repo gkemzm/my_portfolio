@@ -8,7 +8,7 @@ import { Carrer } from '../component/career';
 import { Contect } from '../component/contect';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-const menu = ['Intro & Profile', 'Technique', 'Career', 'Contect'];
+const menu = ['Profile', 'Technique', 'Career', 'Contect'];
 
 export default function Home() {
   const profileFocusRef = useRef(null);
@@ -29,8 +29,8 @@ export default function Home() {
 
   const moveItem = (item) => {
     switch (item) {
-      case 'Intro & Profile':
-        setCurrentItem('Intro & Profile');
+      case 'Profile':
+        setCurrentItem('Profile');
         return profileFocusRef.current?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
@@ -79,7 +79,7 @@ export default function Home() {
     if (positionY < 500) {
       setCurrentItem('home');
     } else if (profileY - 200 < positionY && positionY < techniqueY - 200) {
-      setCurrentItem('Intro & Profile');
+      setCurrentItem('Profile');
     } else if (techniqueY - 200 < positionY && positionY < carrerY - 200) {
       setCurrentItem('Technique');
     } else if (carrerY - 200 < positionY && positionY < contectY - 200) {
@@ -195,6 +195,7 @@ const NavBar = styled.div`
   width: 100%;
   position: sticky;
   top: 0px;
+  z-index: 1;
 
   animation-name: fadeout;
   animation: fadeout 1s 2s 1 linear alternate;

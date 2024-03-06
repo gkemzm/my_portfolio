@@ -9,10 +9,10 @@ const info = {
 export const Carrer = () => {
   return (
     <Wrapper>
-      <ImageBox></ImageBox>
-      <ProfileBox>
-        <InfoText>경력및 이력</InfoText>
-      </ProfileBox>
+      <ContentWrapper>
+        <Title>Carrer</Title>
+        <ContentBox></ContentBox>
+      </ContentWrapper>
     </Wrapper>
   );
 };
@@ -23,16 +23,24 @@ const Wrapper = styled.div`
   height: 800px;
   padding: 0px 40px 40px 40px;
 `;
-const ImageBox = styled.div`
-  width: 50%;
-  border: 1px solid black;
+
+const Title = styled.div`
+  font-size: 36px;
+  line-height: 48px;
 `;
 
-const ProfileBox = styled.div`
-  width: 50%;
+const ContentWrapper = styled.div`
+  width: 100%;
+  padding: 20px;
+`;
 
-  border: 1px solid black;
+const ContentBox = styled.div`
+  width: 100%;
+  height: 93%;
+  border-radius: 10px;
+  background-color: white;
 `;
 const InfoText = styled.p`
-  line-height: 36px;
+  font-size: 36px;
+  line-height: 48px;
 `;
