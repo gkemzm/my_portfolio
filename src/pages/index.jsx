@@ -18,6 +18,7 @@ export default function Home() {
 
   const [positionY, setPositionY] = useState(0);
   const [currentItem, setCurrentItem] = useState('home');
+  const [screenHeight, setScreenHeight] = useState(1400);
 
   const getScrollPostion = () => {
     if (window.scrollY > 0) {
@@ -119,6 +120,12 @@ export default function Home() {
       window.removeEventListener('scroll', getScrollPostion);
     };
   }, []);
+
+  useEffect(() => {
+    const screenHeight = window.screen.height;
+
+    setScreenHeight(screenHeight);
+  });
 
   https: return (
     <Wrapper>
