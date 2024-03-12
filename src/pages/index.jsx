@@ -5,16 +5,16 @@ import { MenuButton } from '../component/menuButton';
 import { Profile } from '../component/profile';
 import { Technique } from '../component/technique';
 import { Carrer } from '../component/career';
-import { Contect } from '../component/contect';
+import { Contact } from '../component/contact';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-const menu = ['Profile', 'Technique', 'Career', 'Contect'];
+const menu = ['Profile', 'Technique', 'Career', 'Contact'];
 
 export default function Home() {
   const profileFocusRef = useRef(null);
   const techniqueFocusRef = useRef(null);
   const carrerFocusRef = useRef(null);
-  const contectFocusRef = useRef(null);
+  const contactFocusRef = useRef(null);
 
   const [positionY, setPositionY] = useState(0);
   const [currentItem, setCurrentItem] = useState('home');
@@ -48,9 +48,9 @@ export default function Home() {
           behavior: 'smooth',
           block: 'start',
         });
-      case 'Contect':
-        setCurrentItem('Contect');
-        return contectFocusRef.current?.scrollIntoView({
+      case 'Contact':
+        setCurrentItem('Contact');
+        return contactFocusRef.current?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
         });
@@ -75,7 +75,7 @@ export default function Home() {
     const profileY = profileFocusRef?.current?.offsetTop;
     const techniqueY = techniqueFocusRef?.current?.offsetTop;
     const carrerY = carrerFocusRef?.current?.offsetTop;
-    const contectY = contectFocusRef?.current?.offsetTop;
+    const contactY = contactFocusRef?.current?.offsetTop;
 
     if (positionY < 500) {
       setCurrentItem('home');
@@ -83,10 +83,10 @@ export default function Home() {
       setCurrentItem('Profile');
     } else if (techniqueY - 200 < positionY && positionY < carrerY - 200) {
       setCurrentItem('Technique');
-    } else if (carrerY - 200 < positionY && positionY < contectY - 200) {
+    } else if (carrerY - 200 < positionY && positionY < contactY - 200) {
       setCurrentItem('Career');
-    } else if (contectY - 200 < positionY) {
-      setCurrentItem('Contect');
+    } else if (contactY - 200 < positionY) {
+      setCurrentItem('Contact');
     }
 
     return (
@@ -145,8 +145,8 @@ export default function Home() {
         <Content ref={carrerFocusRef}>
           <Carrer />
         </Content>
-        <Content ref={contectFocusRef}>
-          <Contect />
+        <Content ref={contactFocusRef}>
+          <Contact />
         </Content>
       </ContentsWrapper>
 
@@ -155,6 +155,7 @@ export default function Home() {
           Park BumSoo | Front-end Portfolio | Email : gkemzm@gmail.com
         </ForrterContent>
       </Fotter>
+      <div id="portal"></div>
     </Wrapper>
   );
 }
@@ -169,7 +170,6 @@ const show = keyframes`
 `;
 
 const Wrapper = styled.div`
-  min-height: 100vh;
   padding: 140px 0;
   min-width: 1400px;
   margin: auto;

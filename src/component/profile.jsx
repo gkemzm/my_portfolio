@@ -90,7 +90,7 @@ export const Profile = () => {
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 800px;
+  height: 85vh;
   padding: 0px 40px 40px 40px;
 `;
 const Title = styled.div`
@@ -107,6 +107,8 @@ const SubTitle = styled.div`
 const ContentWrapper = styled.div`
   width: 100%;
   padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px 3px #0000004b;
 `;
 
 const ContentBox = styled.div`

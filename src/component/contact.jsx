@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
-export const Contect = () => {
+export const Contact = () => {
   const formRef = useRef();
   const [submitData, setSubmitData] = useState({
     name: '',
@@ -47,7 +47,7 @@ export const Contect = () => {
   return (
     <Wrapper>
       <ContentWrapper>
-        <Title>Contect</Title>
+        <Title>Contact</Title>
         <ContentBox
           // action="https://script.google.com/macros/s/AKfycbzxoKn_cKteaLCVBetRUF0YeMMKZHbEL3bx6pe-fCmHo1-P5Q38E2FY759bueXM_zs0/exec"
           // method="POST"
@@ -55,8 +55,10 @@ export const Contect = () => {
           ref={formRef}
           onSubmit={sendEmail}
         >
-          <FlexRow>
-            <InfoText>Name</InfoText>
+          <ContentItem $width={'612px'} $column>
+            <NameBox>
+              <InfoText>Name</InfoText>
+            </NameBox>
             <CustomInput
               type="text"
               name="user_name"
@@ -64,26 +66,30 @@ export const Contect = () => {
               required
               onChange={(e) => onChangeSubmitData('name', e.target.value)}
             />
-          </FlexRow>
+          </ContentItem>
 
-          <FlexRow>
-            <InfoText>E-mail</InfoText>
+          <ContentItem $width={'612px'} $column>
+            <NameBox>
+              <InfoText>E-mail</InfoText>
+            </NameBox>
             <CustomInput
               type="email"
               name="user_email"
-              placeholder="ex)emailId@example.com"
+              placeholder="ex)yourEmailId@example.com"
               required
               onChange={(e) => onChangeSubmitData('email', e.target.value)}
             />
-          </FlexRow>
+          </ContentItem>
 
-          <FlexRow>
-            <InfoText>Message</InfoText>
+          <ContentItem $width={'612px'} $column>
+            <NameBox>
+              <InfoText>Message</InfoText>
+            </NameBox>
             <CustomTextArea
               name="message"
               onChange={(e) => onChangeSubmitData('message', e.target.value)}
             />
-          </FlexRow>
+          </ContentItem>
 
           <BtnWrapper>
             <ContentsBtn type="submit">Submit</ContentsBtn>
@@ -103,13 +109,19 @@ export const Contect = () => {
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 800px;
+  height: 85vh;
   padding: 0px 40px 40px 40px;
 `;
 
 const FlexRow = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const ContentItem = styled(FlexRow)`
+  flex-direction: column;
+  width: ${({ $width }) => $width && $width};
+  align-items: flex-start;
 `;
 
 const Title = styled.div`
@@ -120,13 +132,18 @@ const Title = styled.div`
 const ContentWrapper = styled.div`
   width: 100%;
   padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px 3px #0000004b;
 `;
 
 const ContentBox = styled.form`
   width: 100%;
   height: 93%;
-  border-radius: 10px;
-  box-shadow: 0px 0px 3px 3px #0000004b;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 const InfoText = styled.p`
   font-size: 36px;
@@ -134,19 +151,25 @@ const InfoText = styled.p`
 `;
 
 const CustomInput = styled.input`
-  margin-left: 16px;
   padding: 8px;
   border: none;
   border-radius: 12px;
   box-shadow: 1px 1px 4px #bebebe;
+  width: 240px;
 `;
 
 const CustomTextArea = styled.textarea`
-  margin-left: 16px;
   resize: none;
+  padding: 8px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 1px 1px 4px #bebebe;
+  width: 100%;
+  height: 200px;
 `;
 
 const BtnWrapper = styled.div`
+  margin: 20px 0px;
   :hover {
     background-color: black;
     transition: 0.7s;
@@ -168,4 +191,8 @@ const ContentsBtn = styled.button`
   padding: 0 24px;
 
   cursor: pointer;
+`;
+
+const NameBox = styled.div`
+  width: ${({ $width }) => $width && $width};
 `;
