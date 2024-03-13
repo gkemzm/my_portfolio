@@ -22,20 +22,19 @@ const data = [
 
 const stackImage = [
   { src: '/images/stack/js.png', name: 'JavaScript', width: 48 },
-  { src: '/images/stack/type.png', name: 'TypeScript', width: 48 },
   { src: '/images/stack/react.jpg', name: 'React', width: 48 },
   { src: '/images/stack/next.png', name: 'Next.js', width: 48 },
-  { src: '/images/stack/graphql.png', name: 'GraphQl', width: 48 },
+  { src: '/images/stack/rest.png', name: 'RESTful Api', width: 48 },
   { src: '/images/stack/apollo.png', name: 'apollo Client', width: 48 },
-  { src: '/images/stack/emotion.png', name: 'Emotion', width: 48 },
-  { src: '/images/stack/recoil.png', name: 'Recoil', width: 24 },
+  { src: '/images/stack/styled.jpg', name: 'Styled Component', width: 48 },
+  { src: '/images/stack/jotai.jpg', name: 'Jotai', width: 48 },
 ];
-export const Smaf = () => {
+export const KorlyMally = () => {
   const [currentItem, setCurrentItem] = useState('');
 
   return (
     <Wrapper>
-      <LinkWrapper>
+      {/* <LinkWrapper>
         <LinkButton
           onClick={() =>
             window.open(`https://github.com/code-bootcamp/SMAF-client`)
@@ -52,24 +51,15 @@ export const Smaf = () => {
         >
           <BasicText>Notion</BasicText>
         </LinkButton>
-      </LinkWrapper>
+      </LinkWrapper> */}
 
       <ContentWrapper>
         <Itroduce>
           <TitleText>프로젝트 소개</TitleText>
           <InfoText>
-            SMAF는 Schedule Management Assist Friend 의 약자로 일정 관리를
-            도와주는 Flatform 입니다.
-            <br /> 기존에 많은 일정 관리 사이트가 있지만 실제로 사용해보면서
-            <br />
-            “사용 방법이 복잡하다.”, “가입하기 전에 사용해보지 못한다.” 같은
-            의견이 나왔고, <br />
-            “불편했던 부분을 개선하고 우리끼리 새로운 사이트를 만들어보자!”는
-            결론에 도착하여 기획 되었습니다.
-            <br /> 따라서 SMAF는 회원 가입 전 메인 페이지에서 간단하게 사용
-            방식을 체험 할 수 있으며, <br />
-            직관적인 UI 를 통하여 쉽게 사용이 가능한 장점을 가진 일정 관리
-            Flatform 입니다.
+            gel click 1.0은 해외 쇼핑몰 관리를 위한 솔루션입니다. 해외쇼핑몰
+            주문 관리, 배송 관리, 수출입 신고등 Cross Border eCommerce에 관련된
+            편리한 기능을 제공합니다
           </InfoText>
         </Itroduce>
 

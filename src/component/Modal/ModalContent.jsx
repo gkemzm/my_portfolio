@@ -161,12 +161,12 @@ const LeftIcon = styled(IconWrapper)`
 `;
 
 const Button = styled.button`
-  background-color: black;
-  color: white;
+  background-color: white;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   padding: 4px 8px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  box-shadow: 1px 1px 4px #bebebe;
 `;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-const Carousel = ({ data }) => {
+const Carousel = ({ data, moveValue = 1 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(data.length);
 
@@ -13,15 +13,11 @@ const Carousel = ({ data }) => {
   // }, [data]); >> data가 바뀌지 않는다면 없어도 됨
 
   const next = () => {
-    if (currentIndex < length - 3) {
-      setCurrentIndex((prevState) => prevState + 1);
-    }
+    setCurrentIndex((prev) => prev + 1);
   };
 
   const prev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevState) => prevState - 1);
-    }
+    setCurrentIndex((prev) => prev - 1);
   };
 
   return (
@@ -35,13 +31,17 @@ const Carousel = ({ data }) => {
           <RightButton
             onClick={next}
             curIndex={currentIndex}
-            totalLength={length}
+            totalLength={data.length}
           >
             <FiChevronRight />
           </RightButton>
         </ButtonWrapper>
       </TitleWithButton>
-      <ContentBox style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+      <ContentBox
+        style={{
+          transform: `translateX(-${(currentIndex * 100) / moveValue}%)`,
+        }}
+      >
         {data.map((item, idx) => {
           return (
             <ImageWrapper key={idx} $width={`${item.width}px`}>
@@ -66,6 +66,7 @@ const Wrapper = styled.div`
 
 const ContentBox = styled.div`
   display: flex;
+
   transition: all 0.3s ease-out;
   > * {
     width: 31.3%;
@@ -102,7 +103,7 @@ const RightButton = styled.button`
   width: 60px;
   height: 24px;
   border: 1px solid black;
-  visibility: ${(props) => props.curIndex >= props.totalLength - 3 && 'hidden'};
+  visibility: ${(props) => props.curIndex >= props.totalLength - 1 && 'hidden'};
 
   border: none;
   background-color: white;

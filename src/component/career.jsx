@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import useModal from '@/hooks/useModal';
 import { Smaf } from './Project/smaf';
-
+import { Gel } from './Project/gel';
+import { KorlyMally } from './Project/korly';
 const info = {
   name: '박범수',
   phone: '010-5197-9336',
@@ -13,6 +14,18 @@ export const Carrer = () => {
     open: openSmaf,
     ModalWrapper: SmafModalWrapper,
     close: closeSmaf,
+  } = useModal('xl');
+
+  const {
+    open: openGel,
+    ModalWrapper: GelModalWrapper,
+    close: closeGel,
+  } = useModal('xl');
+
+  const {
+    open: openKorlyMally,
+    ModalWrapper: KorlyMallyModalWrapper,
+    close: closeKorlyMally,
   } = useModal('xl');
 
   return (
@@ -41,6 +54,24 @@ export const Carrer = () => {
               <InfoText>주식회사 코레토 (2022.10 ~ 2023.11)</InfoText>
             </ContentSection>
             <InfoText>참여 프로젝트</InfoText>
+            <LogoWrapper>
+              <LogoBox onClick={openGel}>
+                <Image
+                  src={'/images/web/gel.png'}
+                  alt=""
+                  width={100}
+                  height={40}
+                />
+              </LogoBox>
+              <LogoBox onClick={openGel}>
+                <Image
+                  src={'/images/web/korlymally.JPG'}
+                  alt=""
+                  width={100}
+                  height={40}
+                />
+              </LogoBox>
+            </LogoWrapper>
           </ContentBox>
         </ContentBox>
       </ContentWrapper>
@@ -55,6 +86,30 @@ export const Carrer = () => {
           },
         ]}
         content={<Smaf />}
+      />
+
+      <GelModalWrapper
+        title={'GEL'}
+        buttons={[
+          {
+            label: '닫기',
+            onClick: closeGel,
+            appearance: 'primary',
+          },
+        ]}
+        content={<Gel />}
+      />
+
+      <KorlyMallyModalWrapper
+        title={'GEL'}
+        buttons={[
+          {
+            label: '닫기',
+            onClick: closeKorlyMally,
+            appearance: 'primary',
+          },
+        ]}
+        content={<KorlyMally />}
       />
     </Wrapper>
   );
@@ -107,4 +162,12 @@ const LogoBox = styled.div`
   margin: 8px 0 0 0;
 
   cursor: pointer;
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+
+  & > *:first-child {
+    margin-right: 16px;
+  }
 `;
