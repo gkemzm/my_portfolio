@@ -3,21 +3,11 @@ import Carousel from '../Carousel';
 import Image from 'next/image';
 import { useState } from 'react';
 const webData = [
-  { url: '/images/web/smaf1.PNG', width: 947, height: 684 },
-  { url: '/images/web/smaf2.PNG', width: 947, height: 684 },
-  { url: '/images/web/smaf3.PNG', width: 1047, height: 684 },
-  { url: '/images/web/smaf4.PNG', width: 947, height: 684 },
-];
-
-const data = [
-  { url: '/images/mobile/1.PNG', width: 947, height: 684 },
-  { url: '/images/mobile/2.PNG', width: 240, height: 564 },
-  { url: '/images/mobile/3.PNG', width: 459, height: 511 },
-  { url: '/images/mobile/4.PNG', width: 240, height: 564 },
-  { url: '/images/mobile/5.PNG', width: 240, height: 564 },
-  { url: '/images/mobile/6.PNG', width: 240, height: 564 },
-  { url: '/images/mobile/7.PNG', width: 694, height: 672 },
-  { url: '/images/mobile/8.PNG', width: 240, height: 672 },
+  { url: '/images/web/gel/main.JPG', width: 947, height: 684 },
+  { url: '/images/web/gel/product.JPG', width: 947, height: 400 },
+  { url: '/images/web/gel/shop.JPG', width: 947, height: 400 },
+  { url: '/images/web/gel/logistics.JPG', width: 1047, height: 400 },
+  { url: '/images/web/gel/stock.JPG', width: 947, height: 400 },
 ];
 
 const stackImage = [
@@ -86,8 +76,6 @@ export const Gel = () => {
           <TitleText>화면</TitleText>
           <InfoText>웹 페이지</InfoText>
           <Carousel data={webData} moveValue={1.3} />
-          <InfoText>반응형 페이지</InfoText>
-          <Carousel data={data} moveValue={3.9} />
         </Itroduce>
       </ContentWrapper>
     </Wrapper>

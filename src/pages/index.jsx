@@ -130,8 +130,8 @@ export default function Home() {
   https: return (
     <Wrapper>
       <ProfileWrapper>
-        <Title>Front-end Portfolio</Title>
-        <Name>Park Bum Soo</Name>
+        <Title>Front-end Developer</Title>
+        <Name>Park Bum Soo - Portfolio</Name>
       </ProfileWrapper>
       <NavBar>{changeNavBar}</NavBar>
 

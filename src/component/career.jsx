@@ -63,7 +63,7 @@ export const Carrer = () => {
                   height={40}
                 />
               </LogoBox>
-              <LogoBox onClick={openGel}>
+              <LogoBox onClick={openKorlyMally}>
                 <Image
                   src={'/images/web/korlymally.JPG'}
                   alt=""
@@ -101,7 +101,7 @@ export const Carrer = () => {
       />
 
       <KorlyMallyModalWrapper
-        title={'GEL'}
+        title={'Korly Mally'}
         buttons={[
           {
             label: '닫기',

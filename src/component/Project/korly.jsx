@@ -34,41 +34,30 @@ export const KorlyMally = () => {
 
   return (
     <Wrapper>
-      {/* <LinkWrapper>
+      <LinkWrapper>
         <LinkButton
-          onClick={() =>
-            window.open(`https://github.com/code-bootcamp/SMAF-client`)
-          }
+          onClick={() => window.open(`https://korlymally.kr/aboutus`)}
         >
-          <BasicText>GitHub</BasicText>
+          <BasicText>배포링크</BasicText>
         </LinkButton>
-        <LinkButton
-          onClick={() =>
-            window.open(
-              `https://dingco.notion.site/5-6c65f237620d45ff86a9b8fd5388f2ce`
-            )
-          }
-        >
-          <BasicText>Notion</BasicText>
-        </LinkButton>
-      </LinkWrapper> */}
+      </LinkWrapper>
+      <SubTitle>(아직 정식 출시 전 단계입니다.)</SubTitle>
 
       <ContentWrapper>
         <Itroduce>
           <TitleText>프로젝트 소개</TitleText>
+
           <InfoText>
-            gel click 1.0은 해외 쇼핑몰 관리를 위한 솔루션입니다. 해외쇼핑몰
-            주문 관리, 배송 관리, 수출입 신고등 Cross Border eCommerce에 관련된
-            편리한 기능을 제공합니다
+            Korly Mally는 입점형 해외 쇼핑 플랫폼으로서 한국 브랜드를 모아 해외
+            배송을 대행 해주며,
+            <br /> 다국어/다통화기능을 통한 언어/환율 기능 및 인플루언서
+            매칭을통한 마케팅 지원을 해주는 플랫폼 입니다.
           </InfoText>
         </Itroduce>
 
         <Itroduce>
           <TitleText>역활</TitleText>
-          <InfoText>
-            PM / 기획 / 프론트엔드 개발(메인페이지, QnA페이지, 일정 생성 페이지,
-            반응형 작업)
-          </InfoText>
+          <InfoText>프론트엔드 개발(판매자페이지)</InfoText>
         </Itroduce>
 
         <Itroduce>
@@ -140,6 +129,7 @@ const LinkButton = styled.button`
 `;
 const BasicText = styled.p`
   font-size: 30px;
+  line-height: 38px;
 `;
 
 const ContentWrapper = styled.div``;
@@ -161,4 +151,8 @@ const ImageWrapper = styled.div`
 
 const ImageContent = styled.div`
   margin-right: 16px;
+`;
+const SubTitle = styled(BasicText)`
+  font-size: 24px;
+  line-height: 32px;
 `;
