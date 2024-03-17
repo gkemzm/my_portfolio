@@ -53,6 +53,13 @@ export const Carrer = () => {
               <SubTitle>경력</SubTitle>
               <InfoText>주식회사 코레토 (2022.10 ~ 2023.11)</InfoText>
             </ContentSection>
+            <ContentSection>
+              <InfoText>역활</InfoText>
+              <InfoText>. Front-end 개발</InfoText>
+              <InfoText>
+                - 공용컴포넌트 개발 및 / UI/UX 개선및 유지보수 / 반응형 웹 개선
+              </InfoText>
+            </ContentSection>
             <InfoText>참여 프로젝트</InfoText>
             <LogoWrapper>
               <LogoBox onClick={openGel}>
@@ -120,6 +127,10 @@ const Wrapper = styled.div`
   width: 100%;
   height: 85vh;
   padding: 0px 40px 40px 40px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0px 20px 40px 20px;
+  }
 `;
 
 const Title = styled.div`
@@ -143,12 +154,17 @@ const ContentBox = styled.div`
   height: 93%;
 
   padding: 8px 12px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0px;
+  }
 `;
 
 const ContentSection = styled.div`
   display: flex;
   flex-direction: column;
   margin: ${({ $margin }) => $margin && $margin};
+  margin-bottom: 12px;
 `;
 
 const InfoText = styled.p``;
@@ -160,6 +176,7 @@ const LogoBox = styled.div`
   border-radius: 10px;
   box-shadow: 0px 0px 3px 3px #0000004b;
   margin: 8px 0 0 0;
+  background-color: white;
 
   cursor: pointer;
 `;

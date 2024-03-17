@@ -11,6 +11,7 @@ export const MenuButton = ({ content, yPoint, currentItem }) => {
 };
 
 const BtnWrapper = styled.div`
+  width: 100%;
   :hover {
     background-color: black;
     transition: 0.7s;
@@ -21,6 +22,7 @@ const BtnWrapper = styled.div`
 const ContentsBtn = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 240px;
   height: 60px;
   font-size: 28px;
@@ -33,4 +35,11 @@ const ContentsBtn = styled.div`
   padding: 0 24px;
 
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    width: 92px;
+    font-size: 24px;
+    height: 60px;
+    margin: 0px 4px;
+  }
 `;

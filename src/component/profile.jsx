@@ -92,6 +92,10 @@ const Wrapper = styled.div`
   width: 100%;
   height: 85vh;
   padding: 0px 40px 40px 40px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0px 20px 40px 20px;
+  }
 `;
 const Title = styled.div`
   font-size: 48px;
@@ -101,7 +105,6 @@ const Title = styled.div`
 const SubTitle = styled.div`
   font-size: 28px;
   line-height: 48px;
-  font-weight: bold;
 `;
 
 const ContentWrapper = styled.div`
@@ -117,16 +120,29 @@ const ContentBox = styled.div`
   height: 93%;
   padding: 20px 0px;
   border-radius: 10px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const AboutWrapper = styled.div`
   width: 50%;
 
   padding: 0px 20px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const ProfileWrapper = styled.div`
   width: 50%;
-  border-right: 1px solid black;
+  border-right: 1px solid #ffffff5c;
+
+  @media screen and (max-width: 768px) {
+    border: none;
+    width: 100%;
+  }
 `;
 
 const InfoText = styled.p`
@@ -136,6 +152,10 @@ const InfoText = styled.p`
 
 const ProfileText = styled(InfoText)`
   font-size: 36px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 const IntroduceText = styled(InfoText)`
@@ -144,11 +164,17 @@ const IntroduceText = styled(InfoText)`
 
 const ProfileInfoBox = styled.div`
   display: flex;
-  /* align-items: center; */
   width: 600px;
   border: none;
   border-radius: 4px;
   box-shadow: 3px 3px 5px #0000004b;
   padding: 20px;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 768px) {
+    display: inline-block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+  }
 `;

@@ -69,7 +69,9 @@ const Component = ({
 
 export default Component;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  color: black;
+`;
 
 const Title = styled.div`
   font-size: 24px;

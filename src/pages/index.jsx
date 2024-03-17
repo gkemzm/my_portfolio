@@ -7,12 +7,13 @@ import { Technique } from '../component/technique';
 import { Carrer } from '../component/career';
 import { Contact } from '../component/contact';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { FiChevronsDown } from 'react-icons/fi';
 
-const menu = ['Profile', 'Technique', 'Career', 'Contact'];
+const menu = ['Profile', 'Stack', 'Career', 'Contact'];
 
 export default function Home() {
   const profileFocusRef = useRef(null);
-  const techniqueFocusRef = useRef(null);
+  const stackFocusRef = useRef(null);
   const carrerFocusRef = useRef(null);
   const contactFocusRef = useRef(null);
 
@@ -36,9 +37,9 @@ export default function Home() {
           behavior: 'smooth',
           block: 'start',
         });
-      case 'Technique':
-        setCurrentItem('Technique');
-        return techniqueFocusRef.current?.scrollIntoView({
+      case 'Stack':
+        setCurrentItem('Stack');
+        return stackFocusRef.current?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
         });
@@ -73,16 +74,16 @@ export default function Home() {
 
   const changeNavBar = useMemo(() => {
     const profileY = profileFocusRef?.current?.offsetTop;
-    const techniqueY = techniqueFocusRef?.current?.offsetTop;
+    const StackY = stackFocusRef?.current?.offsetTop;
     const carrerY = carrerFocusRef?.current?.offsetTop;
     const contactY = contactFocusRef?.current?.offsetTop;
 
     if (positionY < 500) {
       setCurrentItem('home');
-    } else if (profileY - 200 < positionY && positionY < techniqueY - 200) {
+    } else if (profileY - 200 < positionY && positionY < StackY - 200) {
       setCurrentItem('Profile');
-    } else if (techniqueY - 200 < positionY && positionY < carrerY - 200) {
-      setCurrentItem('Technique');
+    } else if (StackY - 200 < positionY && positionY < carrerY - 200) {
+      setCurrentItem('Stack');
     } else if (carrerY - 200 < positionY && positionY < contactY - 200) {
       setCurrentItem('Career');
     } else if (contactY - 200 < positionY) {
@@ -134,12 +135,14 @@ export default function Home() {
         <Name>Park Bum Soo - Portfolio</Name>
       </ProfileWrapper>
       <NavBar>{changeNavBar}</NavBar>
-
+      <IconWrapper onClick={() => moveItem('Profile')}>
+        <FiChevronsDown size={'48'} />
+      </IconWrapper>
       <ContentsWrapper>
         <Content ref={profileFocusRef}>
           <Profile />
         </Content>
-        <Content ref={techniqueFocusRef}>
+        <Content ref={stackFocusRef}>
           <Technique />
         </Content>
         <Content ref={carrerFocusRef}>
@@ -149,6 +152,13 @@ export default function Home() {
           <Contact />
         </Content>
       </ContentsWrapper>
+
+      <TopIcon
+        onClick={() => moveItem('home')}
+        $isDisplay={currentItem === 'home'}
+      >
+        <FiChevronUp width={100} height={100} color="white" />
+      </TopIcon>
 
       <Fotter Point={positionY - 200}>
         <ForrterContent Point={positionY - 200}>
@@ -173,29 +183,48 @@ const Wrapper = styled.div`
   padding: 140px 0;
   min-width: 1400px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    min-width: 360px;
+  }
 `;
 
 const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   padding-bottom: 80px;
+
+  width: 1024px;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const Title = styled.h1`
   font-family: 'Dongle_L';
-  font-size: 96px;
-  animation: ${show} 1s 0s 1 linear alternate;
+  font-size: 64px;
+  animation: ${show} 0.5s 0s 1 linear alternate;
+
+  @media screen and (max-width: 768px) {
+    font-size: 48px;
+  }
 `;
 
 const Name = styled.h2`
   font-family: 'Dongle_L';
-  font-size: 96px;
+  font-size: 64px;
   opacity: 0;
-  animation-name: show;
-  animation: ${show} 1s 1s 1 linear alternate;
+  animation: ${show} 0.5s 0.5s 1 linear alternate;
   animation-fill-mode: both;
+
+  @media screen and (max-width: 768px) {
+    font-size: 48px;
+  }
 `;
 
 const NavBar = styled.div`
@@ -205,7 +234,7 @@ const NavBar = styled.div`
   z-index: 1;
 
   animation-name: fadeout;
-  animation: fadeout 1s 2s 1 linear alternate;
+  animation: fadeout 0.5s 1s 1 linear alternate;
   animation-fill-mode: both;
 
   @keyframes fadeout {
@@ -216,6 +245,23 @@ const NavBar = styled.div`
       opacity: 1;
     }
   }
+`;
+
+const IconWrapper = styled.div`
+  padding-top: 300px;
+  animation-name: show;
+  animation: fadeout 0.5s 1.5s 1 linear alternate;
+  animation-fill-mode: both;
+
+  @keyframes fadeout {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  cursor: pointer;
 `;
 
 const BtnWrapper = styled.div`
@@ -232,7 +278,7 @@ const ContentsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  padding-top: 500px;
+  padding-top: 400px;
   max-width: 1920px;
   margin: auto;
 `;
@@ -246,6 +292,10 @@ const HomeButton = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Fotter = styled.div`
@@ -265,4 +315,23 @@ const ForrterContent = styled.p`
   color: white;
   font-family: 'Dongle L';
   font-size: 20px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+`;
+
+const TopIcon = styled.div`
+  display: ${({ $isDisplay }) => ($isDisplay ? 'none' : 'flex')};
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  border-radius: 50px;
+
+  cursor: pointer;
 `;

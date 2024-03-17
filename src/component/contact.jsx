@@ -111,6 +111,10 @@ const Wrapper = styled.div`
   width: 100%;
   height: 85vh;
   padding: 0px 40px 40px 40px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0px 20px 40px 20px;
+  }
 `;
 
 const FlexRow = styled.div`
@@ -122,6 +126,11 @@ const ContentItem = styled(FlexRow)`
   flex-direction: column;
   width: ${({ $width }) => $width && $width};
   align-items: flex-start;
+  margin-bottom: 12px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`

@@ -15,7 +15,7 @@ const stackImage = [
   { src: '/images/stack/react.jpg', name: 'React', width: 48 },
   { src: '/images/stack/next.png', name: 'Next.js', width: 48 },
   { src: '/images/stack/rest.png', name: 'RESTful Api', width: 48 },
-  { src: '/images/stack/apollo.png', name: 'apollo Client', width: 48 },
+
   { src: '/images/stack/styled.jpg', name: 'Styled Component', width: 48 },
   { src: '/images/stack/jotai.jpg', name: 'Jotai', width: 48 },
 ];
