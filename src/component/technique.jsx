@@ -16,6 +16,17 @@ const stackImage = [
   { src: '/images/stack/jotai.jpg', name: 'Jotai', width: 48 },
 ];
 
+const cooperationImage = [
+  { src: '/images/cooperation/git.png', name: 'GitHub', width: 48 },
+  { src: '/images/cooperation/jira.jpg', name: 'Jira', width: 48 },
+  { src: '/images/cooperation/redmine.png', name: 'Red Mine', width: 64 },
+  { src: '/images/cooperation/postman.png', name: 'Postman', width: 48 },
+  { src: '/images/cooperation/playground.png', name: 'Play ground', width: 48 },
+  { src: '/images/cooperation/swagger.png', name: 'Swagger', width: 48 },
+  { src: '/images/cooperation/storybook.png', name: 'Stroy Book', width: 48 },
+  { src: '/images/cooperation/figma.png', name: 'Figma', width: 48 },
+];
+
 export const Technique = () => {
   const [currentItem, setCurrentItem] = useState('');
   return (
@@ -29,29 +40,17 @@ export const Technique = () => {
               {stackImage.map((img) => (
                 <ImageContent
                   key={img.name}
+                  $isCurrent={img.name === currentItem}
                   onMouseOver={() => setCurrentItem(img.name)}
                   onMouseLeave={() => setCurrentItem('')}
+                  onClick={() => setCurrentItem(img.name)}
                 >
-                  {currentItem === img.name ? (
-                    <FlexRow>
-                      <Image
-                        src={img.src}
-                        width={img.width}
-                        height={48}
-                        alt=""
-                      />
-                      <InfoText>{img.name}</InfoText>
-                    </FlexRow>
-                  ) : (
-                    <FlexRow>
-                      <Image
-                        src={img.src}
-                        width={img.width}
-                        height={48}
-                        alt=""
-                      />
-                    </FlexRow>
-                  )}
+                  <ImageItem>
+                    <Image src={img.src} width={img.width} height={48} alt="" />
+                    <StackName $isCurrent={img.name === currentItem}>
+                      {img.name}
+                    </StackName>
+                  </ImageItem>
                 </ImageContent>
               ))}
             </ImageWrapper>
@@ -59,32 +58,20 @@ export const Technique = () => {
           <StackBox>
             <InfoText>Cooperation</InfoText>
             <ImageWrapper>
-              {stackImage.map((img) => (
+              {cooperationImage.map((img) => (
                 <ImageContent
                   key={img.name}
+                  $isCurrent={img.name === currentItem}
                   onMouseOver={() => setCurrentItem(img.name)}
                   onMouseLeave={() => setCurrentItem('')}
+                  onClick={() => setCurrentItem(img.name)}
                 >
-                  {currentItem === img.name ? (
-                    <FlexRow>
-                      <Image
-                        src={img.src}
-                        width={img.width}
-                        height={48}
-                        alt=""
-                      />
-                      <InfoText>{img.name}</InfoText>
-                    </FlexRow>
-                  ) : (
-                    <FlexRow>
-                      <Image
-                        src={img.src}
-                        width={img.width}
-                        height={48}
-                        alt=""
-                      />
-                    </FlexRow>
-                  )}
+                  <ImageItem>
+                    <Image src={img.src} width={img.width} height={48} alt="" />
+                    <StackName $isCurrent={img.name === currentItem}>
+                      {img.name}
+                    </StackName>
+                  </ImageItem>
                 </ImageContent>
               ))}
             </ImageWrapper>
@@ -141,19 +128,59 @@ const InfoText = styled.p`
   line-height: 48px;
 `;
 
+const StackName = styled(InfoText)`
+  position: absolute;
+
+  opacity: ${({ $isCurrent }) => $isCurrent || 0};
+  transform: ${({ $isCurrent }) => $isCurrent && 'translateX(60px)'};
+
+  animation-name: fadeout;
+  animation: ${({ $isCurrent }) => $isCurrent && 'fadeout'} 0.3s 0s 1 linear
+    alternate;
+  animation-fill-mode: both;
+
+  @keyframes fadeout {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
 const ImageWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  background-color: white;
-  padding: 12px;
-  border-radius: 12px;
 `;
 const ImageContent = styled.div`
   margin-right: 16px;
   color: black;
+  background-color: white;
+  padding: 16px;
+  border-radius: 12px;
+  width: 82px;
 
   @media screen and (max-width: 768px) {
     padding: 8px;
+    margin-bottom: 8px;
+  }
+
+  animation-name: 'open';
+  animation: ${({ $isCurrent }) => ($isCurrent ? 'open' : 'close')} 0.3s 0s 1
+    linear alternate;
+  animation-fill-mode: both;
+
+  @keyframes open {
+    0% {
+      width: 82px;
+    }
+
+    100% {
+      width: 300px;
+    }
   }
 `;
+
+const ImageItem = styled(FlexRow)``;
