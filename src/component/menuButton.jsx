@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const MenuButton = ({ content, yPoint, currentItem }) => {
   return (
     <BtnWrapper yPoint={yPoint}>
-      <ContentsBtn isCurrent={content === currentItem}>
+      <ContentsBtn $isCurrent={content === currentItem}>
         {content ? content : 'please content'}
       </ContentsBtn>
     </BtnWrapper>
@@ -27,8 +27,8 @@ const ContentsBtn = styled.div`
   height: 60px;
   font-size: 28px;
   color: white;
-  border: 1px solid ${({ isCurrent }) => (isCurrent ? 'white' : 'none')};
-  background-color: ${({ isCurrent }) => (isCurrent ? 'black' : '#3f22226c')};
+  border: 1px solid ${({ $isCurrent }) => ($isCurrent ? 'white' : 'none')};
+  background-color: ${({ $isCurrent }) => ($isCurrent ? 'black' : '#3f22226c')};
   box-shadow: 3px 3px 5px black;
   border-radius: 13px;
   margin: 0px 12px;

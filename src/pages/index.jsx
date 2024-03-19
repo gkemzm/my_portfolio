@@ -19,7 +19,6 @@ export default function Home() {
 
   const [positionY, setPositionY] = useState(0);
   const [currentItem, setCurrentItem] = useState('home');
-  const [screenHeight, setScreenHeight] = useState(1400);
 
   const getScrollPostion = () => {
     if (window.scrollY > 0) {
@@ -113,20 +112,21 @@ export default function Home() {
   }, [positionY]);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+
     const timer = setInterval(() => {
       window.addEventListener('scroll', getScrollPostion);
     }, 1000);
+
     return () => {
       clearInterval(timer);
       window.removeEventListener('scroll', getScrollPostion);
     };
   }, []);
-
-  useEffect(() => {
-    const screenHeight = window.screen.height;
-
-    setScreenHeight(screenHeight);
-  });
 
   https: return (
     <Wrapper>
@@ -160,8 +160,8 @@ export default function Home() {
         <FiChevronUp width={100} height={100} color="white" />
       </TopIcon>
 
-      <Fotter Point={positionY - 200}>
-        <ForrterContent Point={positionY - 200}>
+      <Fotter $Point={positionY - 200}>
+        <ForrterContent $Point={positionY - 200}>
           Park BumSoo | Front-end Portfolio | Email : gkemzm@gmail.com
         </ForrterContent>
       </Fotter>
@@ -303,7 +303,7 @@ const Fotter = styled.div`
   bottom: 0;
   height: 60px;
   width: 100%;
-  background-color: ${({ Point }) => (Point > 400 ? 'black' : 'none')};
+  background-color: ${({ $Point }) => ($Point > 400 ? 'black' : 'none')};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -311,7 +311,7 @@ const Fotter = styled.div`
 `;
 
 const ForrterContent = styled.p`
-  display: ${({ Point }) => (Point > 400 ? 'grid' : 'none')};
+  display: ${({ $Point }) => ($Point > 400 ? 'grid' : 'none')};
   color: white;
   font-family: 'Dongle L';
   font-size: 20px;
