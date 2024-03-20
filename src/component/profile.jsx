@@ -20,8 +20,8 @@ export const Profile = () => {
               <FiUser
                 style={{
                   margin: '0px 8px 0px 0px',
-                  width: '32px',
-                  height: '32px',
+                  width: '24px',
+                  height: '24px',
                 }}
               />
               <ProfileText>NAME : {info.name}</ProfileText>
@@ -31,8 +31,8 @@ export const Profile = () => {
               <FiMail
                 style={{
                   margin: '0px 8px 0px 0px',
-                  width: '32px',
-                  height: '32px',
+                  width: '24px',
+                  height: '24px',
                 }}
               />
               <ProfileText>EMAIL: {info.email}</ProfileText>
@@ -42,8 +42,8 @@ export const Profile = () => {
               <FiInstagram
                 style={{
                   margin: '0px 8px 0px 0px',
-                  width: '32px',
-                  height: '32px',
+                  width: '24px',
+                  height: '24px',
                 }}
               />
               <ProfileText
@@ -95,6 +95,7 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     padding: 0px 20px 40px 20px;
+    height: auto;
   }
 `;
 const Title = styled.div`
@@ -143,6 +144,7 @@ const ProfileWrapper = styled.div`
     border: none;
     width: 100%;
   }
+  border: 1px solid black;
 `;
 
 const InfoText = styled.p`
@@ -151,10 +153,11 @@ const InfoText = styled.p`
 `;
 
 const ProfileText = styled(InfoText)`
-  font-size: 36px;
+  font-size: 28px;
+  line-height: 30px;
 
   @media screen and (max-width: 768px) {
-    font-size: 32px;
+    font-size: 28px;
   }
 `;
 

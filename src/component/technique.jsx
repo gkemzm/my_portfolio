@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const stackImage = [
@@ -37,6 +37,21 @@ const cooperationImage = [
 
 export const Technique = () => {
   const [currentItem, setCurrentItem] = useState('');
+  const barRef = useRef(null);
+
+  const AchieveBar = useMemo(() => {
+    const barWidth = barRef?.current?.offsetWidth || 1;
+    return (
+      <InfoWrapper>
+        <AchieveValue>Achievement</AchieveValue>
+        <InfoBar ref={barRef}>
+          <Line $barWidth={barWidth} $turn={1}></Line>
+          <Line $barWidth={barWidth} $turn={2}></Line>
+        </InfoBar>
+      </InfoWrapper>
+    );
+  }, [barRef]);
+
   return (
     <Wrapper>
       <ContentWrapper>
@@ -63,6 +78,7 @@ export const Technique = () => {
               ))}
             </ImageWrapper>
           </StackBox>
+          {/* {AchieveBar} */}
           <StackBox>
             <InfoText>Cooperation</InfoText>
             <ImageWrapper>
@@ -116,7 +132,7 @@ const Title = styled.div`
 `;
 
 const StackBox = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 
   padding-bottom: 18vh;
 
@@ -198,3 +214,34 @@ const ImageContent = styled.div`
 `;
 
 const ImageItem = styled(FlexRow)``;
+
+const InfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const InfoBar = styled.div`
+  height: 12px;
+  width: 100%;
+  max-width: 50%;
+  border-radius: 16px;
+  background-color: #110c03d6;
+  margin: 0px 0px 0px 12px;
+`;
+
+const AchieveValue = styled(InfoText)`
+  font-size: 28px;
+`;
+
+const Line = styled.div`
+  height: 12px;
+  position: absolute;
+  border: 1px solid white;
+
+  transform: ${({ $barWidth, $turn }) =>
+    $barWidth && `translateX(${($barWidth / 3) * $turn}px)`};
+`;
