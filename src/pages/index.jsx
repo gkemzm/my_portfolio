@@ -186,6 +186,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.705);
 
   @media screen and (max-width: 768px) {
     min-width: 360px;

@@ -144,7 +144,6 @@ const ProfileWrapper = styled.div`
     border: none;
     width: 100%;
   }
-  border: 1px solid black;
 `;
 
 const InfoText = styled.p`
