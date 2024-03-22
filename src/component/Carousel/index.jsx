@@ -50,6 +50,7 @@ const Carousel = ({ data, moveValue = 1 }) => {
                 alt=""
                 width={item.width}
                 height={item.height}
+                priority={true}
               />
             </ImageWrapper>
           );

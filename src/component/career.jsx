@@ -46,6 +46,7 @@ export const Carrer = () => {
                   alt=""
                   width={100}
                   height={40}
+                  priority={true}
                 />
               </LogoBox>
             </ContentSection>
@@ -68,6 +69,7 @@ export const Carrer = () => {
                   alt=""
                   width={100}
                   height={40}
+                  priority={true}
                 />
               </LogoBox>
               <LogoBox onClick={openKorlyMally}>
@@ -76,6 +78,7 @@ export const Carrer = () => {
                   alt=""
                   width={100}
                   height={40}
+                  priority={true}
                 />
               </LogoBox>
             </LogoWrapper>
