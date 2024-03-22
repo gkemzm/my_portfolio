@@ -169,6 +169,10 @@ const StackName = styled(InfoText)`
     alternate;
   animation-fill-mode: both;
 
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
   @keyframes fadeout {
     0% {
       opacity: 0;
@@ -192,15 +196,17 @@ const ImageContent = styled.div`
   border-radius: 12px;
   width: 82px;
 
-  @media screen and (max-width: 768px) {
-    padding: 8px;
-    margin-bottom: 8px;
-  }
-
   animation-name: 'open';
   animation: ${({ $isCurrent }) => ($isCurrent ? 'open' : 'close')} 0.3s 0s 1
     linear alternate;
   animation-fill-mode: both;
+
+  @media screen and (max-width: 768px) {
+    padding: 8px;
+    margin-bottom: 8px;
+    animation-name: 'close';
+    animation: none;
+  }
 
   @keyframes open {
     0% {
@@ -209,6 +215,12 @@ const ImageContent = styled.div`
 
     100% {
       width: 300px;
+    }
+  }
+
+  @keyframes none {
+    100% {
+      width: 82px;
     }
   }
 `;
