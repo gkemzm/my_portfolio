@@ -92,7 +92,9 @@ export const Contact = () => {
           </ContentItem>
 
           <BtnWrapper>
-            <ContentsBtn type="submit">Submit</ContentsBtn>
+            <ContentsBtn type="submit">
+              <InfoText>Submit</InfoText>
+            </ContentsBtn>
           </BtnWrapper>
 
           {isSuccess && (
@@ -134,7 +136,7 @@ const ContentItem = styled(FlexRow)`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.p`
   font-size: 36px;
   line-height: 48px;
 `;
@@ -189,6 +191,7 @@ const BtnWrapper = styled.div`
 const ContentsBtn = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 240px;
   height: 60px;
   font-size: 20px;

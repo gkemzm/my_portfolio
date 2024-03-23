@@ -121,8 +121,7 @@ const ImageWrapper = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  padding: 0px 8px;
-
+  padding: 8px;
   & > *:first-child {
     margin-right: 16px;
   }

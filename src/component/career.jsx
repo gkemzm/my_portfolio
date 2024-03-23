@@ -34,7 +34,7 @@ export const Carrer = () => {
         <Title>Carrer</Title>
         <ContentBox>
           <ContentBox>
-            <ContentSection $margin={'0px 0px 40px 0px'}>
+            <ContentSection $margin={'0px 0px 100px 0px'}>
               <SubTitle>수료교육</SubTitle>
               <InfoText>
                 부트캠프 : 코드캠프 Front-end 5기 수료 (2022.02 ~ 2022.05) 참여
@@ -50,11 +50,11 @@ export const Carrer = () => {
                 />
               </LogoBox>
             </ContentSection>
-            <ContentSection>
+            <ContentSection $margin={'0px 0px 16px 0px'}>
               <SubTitle>경력</SubTitle>
               <InfoText>주식회사 코레토 (2022.10 ~ 2023.11)</InfoText>
             </ContentSection>
-            <ContentSection>
+            <ContentSection $margin={'0px 0px 24px 0px'}>
               <InfoText>역활</InfoText>
               <InfoText>. Front-end 개발</InfoText>
               <InfoText>
@@ -137,12 +137,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const Title = styled.div`
-  font-size: 36px;
+const Title = styled.p`
+  font-size: 48px;
   line-height: 48px;
 `;
-const SubTitle = styled.div`
-  font-size: 36px;
+
+const SubTitle = styled.p`
+  font-size: 42px;
   line-height: 48px;
 `;
 
@@ -155,10 +156,9 @@ const ContentWrapper = styled.div`
 
 const ContentBox = styled.div`
   width: 100%;
-  height: 93%;
+  min-height: 93%;
 
-  padding: 8px 12px;
-
+  padding: 8px 0px;
   @media screen and (max-width: 768px) {
     padding: 0px;
   }
@@ -168,10 +168,11 @@ const ContentSection = styled.div`
   display: flex;
   flex-direction: column;
   margin: ${({ $margin }) => $margin && $margin};
-  margin-bottom: 12px;
 `;
 
-const InfoText = styled.p``;
+const InfoText = styled.p`
+  font-size: 28px;
+`;
 
 const LogoBox = styled.div`
   width: 116px;

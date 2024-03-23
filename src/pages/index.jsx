@@ -93,7 +93,7 @@ export default function Home() {
       <BtnWrapper Point={positionY - 200}>
         {positionY > 600 && positionY ? (
           <HomeButton onClick={() => moveItem('home')}>
-            <FiChevronUp width={100} height={100} color="white" />
+            <FiChevronUp width={200} height={200} color="white" />
           </HomeButton>
         ) : (
           <></>
@@ -186,7 +186,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.705);
 
   @media screen and (max-width: 768px) {
     min-width: 360px;

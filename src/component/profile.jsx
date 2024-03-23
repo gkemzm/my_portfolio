@@ -90,7 +90,7 @@ export const Profile = () => {
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 85vh;
+  height: auto;
   padding: 0px 40px 40px 40px;
 
   @media screen and (max-width: 768px) {
@@ -98,12 +98,12 @@ const Wrapper = styled.div`
     height: auto;
   }
 `;
-const Title = styled.div`
+const Title = styled.p`
   font-size: 48px;
   line-height: 48px;
 `;
 
-const SubTitle = styled.div`
+const SubTitle = styled.p`
   font-size: 28px;
   line-height: 48px;
 `;
@@ -118,7 +118,7 @@ const ContentWrapper = styled.div`
 const ContentBox = styled.div`
   display: flex;
   width: 100%;
-  height: 93%;
+
   padding: 20px 0px;
   border-radius: 10px;
 
@@ -140,6 +140,7 @@ const ProfileWrapper = styled.div`
   width: 50%;
   border-right: 1px solid #ffffff5c;
 
+  height: auto;
   @media screen and (max-width: 768px) {
     border: none;
     width: 100%;
@@ -152,8 +153,8 @@ const InfoText = styled.p`
 `;
 
 const ProfileText = styled(InfoText)`
-  font-size: 28px;
-  line-height: 30px;
+  font-size: 30px;
+  line-height: 28px;
 
   @media screen and (max-width: 768px) {
     font-size: 28px;
@@ -161,17 +162,19 @@ const ProfileText = styled(InfoText)`
 `;
 
 const IntroduceText = styled(InfoText)`
+  font-size: 24px;
   padding-bottom: 32px;
 `;
 
 const ProfileInfoBox = styled.div`
   display: flex;
+  align-items: center;
   width: 600px;
   border: none;
   border-radius: 4px;
   box-shadow: 3px 3px 5px #0000004b;
-  padding: 20px;
   margin-bottom: 40px;
+  padding: 20px;
 
   @media screen and (max-width: 768px) {
     display: inline-block;

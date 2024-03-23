@@ -24,24 +24,47 @@ const Component = createGlobalStyle`
     src: url('../../public//font//Dongle-Bold.ttf');
   }
 
+  .dongle-light {
+  font-family: "Dongle", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  }
 
+  .dongle-regular {
+    font-family: "Dongle", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .dongle-bold {
+    font-family: "Dongle", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
 
 
   * {
     box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {    
+    font-size: 24px;
+    font-family: "Dongle", sans-serif !important;  
+    font-style: normal;
+
   }
 
 
   body {
-    font-size: 24px;
-    font-family: 'Dongle_R';
     color: white;
     overflow-x: hidden;  
-    background-color: rgba(0, 0, 0, 0.356);
+    background-color: rgba(0, 0, 0, 0.719);
   }
 
   ::-webkit-scrollbar {
-  width: 0.5rem;
+  width: 0.8rem;
   background-color: black;
   }
 

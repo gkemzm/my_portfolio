@@ -57,7 +57,9 @@ const Component = ({
           <BtnSection>
             {buttons.map((button) => (
               <div key={button.label}>
-                <Button onClick={button.onClick}>{button.label}</Button>
+                <Button onClick={button.onClick}>
+                  <H6Typo>{button.label}</H6Typo>
+                </Button>
               </div>
             ))}
           </BtnSection>
@@ -134,10 +136,10 @@ const BtnSection = styled.div`
   }
 `;
 
-const H6Typo = styled.div`
+const H6Typo = styled.p`
   margin-left: ${({ hasBack }) => (hasBack ? '28px' : '0')};
   font-weight: 800;
-  font-size: 48px;
+  font-size: 60px;
 `;
 
 const Box = styled(H6Typo)`

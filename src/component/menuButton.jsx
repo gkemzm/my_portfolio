@@ -4,7 +4,7 @@ export const MenuButton = ({ content, yPoint, currentItem }) => {
   return (
     <BtnWrapper yPoint={yPoint}>
       <ContentsBtn $isCurrent={content === currentItem}>
-        {content ? content : 'please content'}
+        <Title>{content ? content : 'please content'}</Title>
       </ContentsBtn>
     </BtnWrapper>
   );
@@ -42,4 +42,8 @@ const ContentsBtn = styled.div`
     height: 60px;
     margin: 0px 4px;
   }
+`;
+
+const Title = styled.p`
+  font-size: 32px;
 `;

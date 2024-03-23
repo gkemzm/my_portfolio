@@ -162,7 +162,9 @@ const TitleText = styled.p`
   font-size: 30px;
 `;
 
-const InfoText = styled.p``;
+const InfoText = styled.p`
+  font-size: 28px;
+`;
 
 const ImageWrapper = styled.div`
   display: flex;

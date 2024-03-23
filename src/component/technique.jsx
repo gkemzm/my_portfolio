@@ -109,7 +109,7 @@ export const Technique = () => {
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 85vh;
+  height: auto;
   padding: 0px 40px 40px 40px;
 
   @media screen and (max-width: 768px) {
@@ -126,11 +126,9 @@ const FlexRow = styled.div`
   }
 `;
 
-const Title = styled.div`
-  font-size: 36px;
-  line-height: 48px;
+const Title = styled.p`
+  font-size: 48px;
 `;
-
 const StackBox = styled.div`
   margin-bottom: 20px;
 
