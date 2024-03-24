@@ -16,8 +16,9 @@ export const Contact = () => {
     if (!formRef.current) return;
 
     e.preventDefault();
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     emailjs
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       .sendForm('service_r882pyn', 'template_zcjxcvs', formRef.current, {
         publicKey: 'zxtTqEkoxsrvcLhxu',
       })
