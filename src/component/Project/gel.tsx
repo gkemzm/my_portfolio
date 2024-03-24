@@ -74,7 +74,7 @@ export const Gel = () => {
         <Itroduce>
           <TitleText>화면</TitleText>
           <InfoText>웹 페이지</InfoText>
-          <Carousel data={webData} moveValue={1.3} />
+          <Carousel data={webData} moveValue={1.3} totalLength={5} />
         </Itroduce>
       </ContentWrapper>
     </Wrapper>

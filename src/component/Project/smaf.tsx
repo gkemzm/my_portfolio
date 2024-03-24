@@ -107,9 +107,9 @@ export const Smaf = () => {
         <Itroduce>
           <TitleText>화면</TitleText>
           <InfoText>웹 페이지</InfoText>
-          <Carousel data={webData} moveValue={1.3} />
+          <Carousel data={webData} moveValue={1.3} totalLength={4} />
           <InfoText>반응형 페이지</InfoText>
-          <Carousel data={data} moveValue={3.9} />
+          <Carousel data={data} moveValue={3.9} totalLength={8} />
         </Itroduce>
       </ContentWrapper>
     </Wrapper>

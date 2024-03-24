@@ -7,9 +7,11 @@ import { CarouselItemTypes } from './component.types';
 const Carousel = ({
   data,
   moveValue = 1,
+  totalLength,
 }: {
-  data: CarouselItemTypes;
+  data: Array<CarouselItemTypes>;
   moveValue: number;
+  totalLength: number;
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -37,7 +39,7 @@ const Carousel = ({
           <RightButton
             onClick={next}
             curIndex={currentIndex}
-            totalLength={data.length}
+            totalLength={totalLength}
           >
             <FiChevronRight />
           </RightButton>
