@@ -4,10 +4,9 @@
 
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import ModalContent from './ModalContent';
-import { modalSizeStyles } from './style';
 import useLockedBody from '../../hooks/useScrollLock';
 import { ModalComponentTypes } from './component.types';
 const Component = ({
@@ -34,6 +33,7 @@ const Component = ({
   useEffect(() => {
     // @ts-ignore
     setLocked(isOpen);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   useEffect(() => {

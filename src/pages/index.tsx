@@ -69,7 +69,7 @@ export default function Home() {
         });
     }
   };
-//자동빌드 테스트
+
   const changeNavBar = useMemo(() => {
     const profileY = profileFocusRef?.current?.offsetTop;
     const StackY = stackFocusRef?.current?.offsetTop;
