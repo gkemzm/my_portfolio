@@ -3,12 +3,10 @@
  */
 
 import { FiChevronLeft, FiX } from 'react-icons/fi';
-// import { GoAlert } from 'react-icons/go';
+
 import styled, { css } from 'styled-components';
 
-// import Button from '../Button';
-// import Typography from '../Typography';
-
+import { ModalContentTypes } from './component.types';
 const Component = ({
   title,
   content,
@@ -18,10 +16,10 @@ const Component = ({
   closeEvent,
   isFull,
   noPadding = false,
-}) => {
+}: ModalContentTypes) => {
   return (
     <Wrapper>
-      <TitleWrapper isFull={isFull}>
+      <TitleWrapper>
         {backEvent?.isBack && (
           <LeftIcon onClick={backEvent?.onClick}>
             <FiChevronLeft size={20} />
@@ -29,10 +27,8 @@ const Component = ({
         )}
         {title && (
           <Title>
-            {typeof title === 'string' ? (
+            {typeof title === 'string' && (
               <H6Typo hasBack={backEvent?.isBack}>{title}</H6Typo>
-            ) : (
-              <Box>{title?.label}</Box>
             )}
           </Title>
         )}
@@ -58,7 +54,7 @@ const Component = ({
             {buttons.map((button) => (
               <div key={button.label}>
                 <Button onClick={button.onClick}>
-                  <H6Typo>{button.label}</H6Typo>
+                  <H6Typo hasBack={false}>{button.label}</H6Typo>
                 </Button>
               </div>
             ))}
@@ -80,7 +76,7 @@ const Title = styled.div`
   font-weight: 900;
 `;
 
-const Content = styled.div`
+const Content = styled.div<{ isFull: boolean; noPadding: boolean }>`
   margin: 24px 0 0;
   ${({ isFull, noPadding }) => {
     if (isFull) {
@@ -112,7 +108,7 @@ const Content = styled.div`
 `;
 
 const ContentLabel = styled.div``;
-const BottomSection = styled.div`
+const BottomSection = styled.div<{ isFull: boolean }>`
   display: flex;
   width: 100%;
   flex-wrap: wrap;
@@ -136,14 +132,17 @@ const BtnSection = styled.div`
   }
 `;
 
-const H6Typo = styled.p`
+const H6Typo = styled.p<{ hasBack: boolean }>`
   margin-left: ${({ hasBack }) => (hasBack ? '28px' : '0')};
   font-weight: 800;
   font-size: 60px;
 `;
 
-const Box = styled(H6Typo)`
+const Box = styled.p<{ hasBack: boolean }>`
   display: flex;
+  margin-left: ${({ hasBack }) => (hasBack ? '28px' : '0')};
+  font-weight: 800;
+  font-size: 60px;
 `;
 
 const TitleWrapper = styled.div`

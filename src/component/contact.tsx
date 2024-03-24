@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { useRef, useState } from 'react';
+import { MutableRefObject, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
-  const formRef = useRef();
+  const formRef = useRef<null | string | HTMLFormElement>();
   const [submitData, setSubmitData] = useState({
     name: '',
     email: '',
@@ -12,7 +12,9 @@ export const Contact = () => {
   });
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    if (!formRef.current) return;
+
     e.preventDefault();
 
     emailjs
@@ -30,10 +32,10 @@ export const Contact = () => {
         }
       );
 
-    e.target.reset();
+    e.currentTarget.reset();
   };
 
-  const onChangeSubmitData = (type, value) => {
+  const onChangeSubmitData = (type: string, value: string) => {
     switch (type) {
       case 'name':
         return setSubmitData({ ...submitData, name: value });
@@ -55,8 +57,8 @@ export const Contact = () => {
           ref={formRef}
           onSubmit={sendEmail}
         >
-          <ContentItem $width={'612px'} $column>
-            <NameBox>
+          <ContentItem $width={'612px'}>
+            <NameBox $width={'auto'}>
               <InfoText>Name</InfoText>
             </NameBox>
             <CustomInput
@@ -68,8 +70,8 @@ export const Contact = () => {
             />
           </ContentItem>
 
-          <ContentItem $width={'612px'} $column>
-            <NameBox>
+          <ContentItem $width={'612px'}>
+            <NameBox $width={'auto'}>
               <InfoText>E-mail</InfoText>
             </NameBox>
             <CustomInput
@@ -81,8 +83,8 @@ export const Contact = () => {
             />
           </ContentItem>
 
-          <ContentItem $width={'612px'} $column>
-            <NameBox>
+          <ContentItem $width={'612px'}>
+            <NameBox $width={'auto'}>
               <InfoText>Message</InfoText>
             </NameBox>
             <CustomTextArea
@@ -125,7 +127,7 @@ const FlexRow = styled.div`
   align-items: center;
 `;
 
-const ContentItem = styled(FlexRow)`
+const ContentItem = styled(FlexRow)<{ $width: string }>`
   flex-direction: column;
   width: ${({ $width }) => $width && $width};
   align-items: flex-start;
@@ -148,7 +150,7 @@ const ContentWrapper = styled.div`
   box-shadow: 0px 0px 3px 3px #0000004b;
 `;
 
-const ContentBox = styled.form`
+const ContentBox = styled.form<{ ref: any }>`
   width: 100%;
   height: 93%;
 
@@ -197,7 +199,7 @@ const ContentsBtn = styled.button`
   font-size: 20px;
   color: white;
   border: none;
-  background-color: ${({ isCurrent }) => (isCurrent ? 'black' : '#3f22226c')};
+  background-color: #3f22226c;
   box-shadow: 3px 3px 5px black;
   border-radius: 13px;
   margin: 0px 12px;
@@ -206,6 +208,6 @@ const ContentsBtn = styled.button`
   cursor: pointer;
 `;
 
-const NameBox = styled.div`
+const NameBox = styled.div<{ $width: string }>`
   width: ${({ $width }) => $width && $width};
 `;

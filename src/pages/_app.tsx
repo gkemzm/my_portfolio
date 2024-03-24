@@ -1,11 +1,11 @@
 // import '@/styles/globals.css';
 
 import GlobalStyle from '../styles/GlobalStyle';
-
+import { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
 import Head from 'next/head';
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />

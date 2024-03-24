@@ -39,18 +39,18 @@ export const Technique = () => {
   const [currentItem, setCurrentItem] = useState('');
   const barRef = useRef(null);
 
-  const AchieveBar = useMemo(() => {
-    const barWidth = barRef?.current?.offsetWidth || 1;
-    return (
-      <InfoWrapper>
-        <AchieveValue>Achievement</AchieveValue>
-        <InfoBar ref={barRef}>
-          <Line $barWidth={barWidth} $turn={1}></Line>
-          <Line $barWidth={barWidth} $turn={2}></Line>
-        </InfoBar>
-      </InfoWrapper>
-    );
-  }, [barRef]);
+  //  const AchieveBar = useMemo(() => {
+  //    const barWidth = barRef?.current?.offsetWidth || 1;
+  //    return (
+  //      <InfoWrapper>
+  //        <AchieveValue>Achievement</AchieveValue>
+  //        <InfoBar ref={barRef}>
+  //          <Line $barWidth={barWidth} $turn={1}></Line>
+  //         <Line $barWidth={barWidth} $turn={2}></Line>
+  //       </InfoBar>
+  //     </InfoWrapper>
+  //   );
+  //}, [barRef]);
 
   return (
     <Wrapper>
@@ -156,10 +156,10 @@ const InfoText = styled.p`
   line-height: 48px;
 `;
 
-const StackName = styled(InfoText)`
+const StackName = styled(InfoText)<{ $isCurrent: boolean }>`
   position: absolute;
 
-  opacity: ${({ $isCurrent }) => $isCurrent || 0};
+  opacity: ${({ $isCurrent }) => !$isCurrent && 0};
   transform: ${({ $isCurrent }) => $isCurrent && 'translateX(60px)'};
 
   animation-name: fadeout;
@@ -186,7 +186,7 @@ const ImageWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
 `;
-const ImageContent = styled.div`
+const ImageContent = styled.div<{ $isCurrent: boolean }>`
   margin-right: 16px;
   color: black;
   background-color: white;
@@ -247,7 +247,7 @@ const AchieveValue = styled(InfoText)`
   font-size: 28px;
 `;
 
-const Line = styled.div`
+const Line = styled.div<{ $barWidth: number; $turn: number }>`
   height: 12px;
   position: absolute;
   border: 1px solid white;

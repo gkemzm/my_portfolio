@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import { MenuButtenProps } from './component.types';
 
-export const MenuButton = ({ content, yPoint, currentItem }) => {
+export const MenuButton = ({
+  content,
+  yPoint,
+  currentItem,
+}: MenuButtenProps) => {
   return (
-    <BtnWrapper yPoint={yPoint}>
+    <BtnWrapper $yPoint={yPoint}>
       <ContentsBtn $isCurrent={content === currentItem}>
         <Title>{content ? content : 'please content'}</Title>
       </ContentsBtn>
@@ -10,16 +15,16 @@ export const MenuButton = ({ content, yPoint, currentItem }) => {
   );
 };
 
-const BtnWrapper = styled.div`
+const BtnWrapper = styled.div<{ $yPoint: number }>`
   width: 100%;
   :hover {
     background-color: black;
     transition: 0.7s;
-    border: 1px solid ${({ yPoint }) => (yPoint > 400 ? 'white' : 'none')};
+    border: 1px solid ${({ $yPoint }) => ($yPoint > 400 ? 'white' : 'none')};
   }
 `;
 
-const ContentsBtn = styled.div`
+const ContentsBtn = styled.div<{ $isCurrent: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;

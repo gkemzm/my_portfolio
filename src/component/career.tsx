@@ -4,6 +4,7 @@ import useModal from '@/hooks/useModal';
 import { Smaf } from './Project/smaf';
 import { Gel } from './Project/gel';
 import { KorlyMally } from './Project/korly';
+
 const info = {
   name: '박범수',
   phone: '010-5197-9336',
@@ -14,19 +15,19 @@ export const Carrer = () => {
     open: openSmaf,
     ModalWrapper: SmafModalWrapper,
     close: closeSmaf,
-  } = useModal('xl');
+  } = useModal('xl', false);
 
   const {
     open: openGel,
     ModalWrapper: GelModalWrapper,
     close: closeGel,
-  } = useModal('xl');
+  } = useModal('xl', false);
 
   const {
     open: openKorlyMally,
     ModalWrapper: KorlyMallyModalWrapper,
     close: closeKorlyMally,
-  } = useModal('xl');
+  } = useModal('xl', false);
 
   return (
     <Wrapper>
@@ -96,6 +97,24 @@ export const Carrer = () => {
           },
         ]}
         content={<Smaf />}
+        size={''}
+        isFull={false}
+        children={undefined}
+        isOpen={false}
+        onBackdropClicked={undefined}
+        closeEvent={{
+          isClose: false,
+          onClick: function (): void {
+            throw new Error('Function not implemented.');
+          },
+        }}
+        backEvent={{
+          isBack: false,
+          onClick: function (): void {
+            throw new Error('Function not implemented.');
+          },
+        }}
+        noPadding={false}
       />
 
       <GelModalWrapper
@@ -108,6 +127,24 @@ export const Carrer = () => {
           },
         ]}
         content={<Gel />}
+        size={''}
+        isFull={false}
+        children={undefined}
+        isOpen={false}
+        onBackdropClicked={undefined}
+        closeEvent={{
+          isClose: false,
+          onClick: function (): void {
+            throw new Error('Function not implemented.');
+          },
+        }}
+        backEvent={{
+          isBack: false,
+          onClick: function (): void {
+            throw new Error('Function not implemented.');
+          },
+        }}
+        noPadding={false}
       />
 
       <KorlyMallyModalWrapper
@@ -120,6 +157,24 @@ export const Carrer = () => {
           },
         ]}
         content={<KorlyMally />}
+        size={''}
+        isFull={false}
+        children={undefined}
+        isOpen={false}
+        onBackdropClicked={undefined}
+        closeEvent={{
+          isClose: false,
+          onClick: function (): void {
+            throw new Error('Function not implemented.');
+          },
+        }}
+        backEvent={{
+          isBack: false,
+          onClick: function (): void {
+            throw new Error('Function not implemented.');
+          },
+        }}
+        noPadding={false}
       />
     </Wrapper>
   );
@@ -164,7 +219,7 @@ const ContentBox = styled.div`
   }
 `;
 
-const ContentSection = styled.div`
+const ContentSection = styled.div<{ $margin: string }>`
   display: flex;
   flex-direction: column;
   margin: ${({ $margin }) => $margin && $margin};

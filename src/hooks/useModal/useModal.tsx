@@ -1,8 +1,9 @@
 import { useCallback, useState } from 'react';
 
 import Modal from '../../component/Modal';
+import { ModalComponentTypes } from './component.types';
 
-export default function useModal(size, isFull) {
+export default function useModal(size: string | number, isFull: boolean) {
   const [isOpen, setOpen] = useState(false);
 
   const open = useCallback(() => {
@@ -13,7 +14,7 @@ export default function useModal(size, isFull) {
     setOpen(false);
   }, []);
 
-  const handleBackdropClick = useCallback((e) => {
+  const handleBackdropClick = useCallback((e: MouseEvent) => {
     e.stopPropagation();
     close();
   }, []);
@@ -33,7 +34,7 @@ export default function useModal(size, isFull) {
       closeEvent,
       backEvent,
       noPadding,
-    }) => (
+    }: ModalComponentTypes) => (
       <Modal
         size={size}
         isFull={isFull}

@@ -12,10 +12,10 @@ import { FiChevronsDown } from 'react-icons/fi';
 const menu = ['Profile', 'Stack', 'Career', 'Contact'];
 
 export default function Home() {
-  const profileFocusRef = useRef(null);
-  const stackFocusRef = useRef(null);
-  const carrerFocusRef = useRef(null);
-  const contactFocusRef = useRef(null);
+  const profileFocusRef = useRef<null | HTMLDivElement>(null);
+  const stackFocusRef = useRef<null | HTMLDivElement>(null);
+  const carrerFocusRef = useRef<null | HTMLDivElement>(null);
+  const contactFocusRef = useRef<null | HTMLDivElement>(null);
 
   const [positionY, setPositionY] = useState(0);
   const [currentItem, setCurrentItem] = useState('home');
@@ -28,7 +28,7 @@ export default function Home() {
     }
   };
 
-  const moveItem = (item) => {
+  const moveItem = (item: string) => {
     switch (item) {
       case 'Profile':
         setCurrentItem('Profile');
@@ -77,20 +77,22 @@ export default function Home() {
     const carrerY = carrerFocusRef?.current?.offsetTop;
     const contactY = contactFocusRef?.current?.offsetTop;
 
-    if (positionY < 500) {
-      setCurrentItem('home');
-    } else if (profileY - 200 < positionY && positionY < StackY - 200) {
-      setCurrentItem('Profile');
-    } else if (StackY - 200 < positionY && positionY < carrerY - 200) {
-      setCurrentItem('Stack');
-    } else if (carrerY - 200 < positionY && positionY < contactY - 200) {
-      setCurrentItem('Career');
-    } else if (contactY - 200 < positionY) {
-      setCurrentItem('Contact');
+    if (profileY && StackY && carrerY && contactY) {
+      if (positionY < 500) {
+        setCurrentItem('home');
+      } else if (profileY - 200 < positionY && positionY < StackY - 200) {
+        setCurrentItem('Profile');
+      } else if (StackY - 200 < positionY && positionY < carrerY - 200) {
+        setCurrentItem('Stack');
+      } else if (carrerY - 200 < positionY && positionY < contactY - 200) {
+        setCurrentItem('Career');
+      } else if (contactY - 200 < positionY) {
+        setCurrentItem('Contact');
+      }
     }
 
     return (
-      <BtnWrapper Point={positionY - 200}>
+      <BtnWrapper $Point={positionY - 200}>
         {positionY > 600 && positionY ? (
           <HomeButton onClick={() => moveItem('home')}>
             <FiChevronUp width={200} height={200} color="white" />
@@ -264,12 +266,12 @@ const IconWrapper = styled.div`
   cursor: pointer;
 `;
 
-const BtnWrapper = styled.div`
+const BtnWrapper = styled.div<{ $Point: number }>`
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ Point }) => (Point > 400 ? 'black' : 'none')};
+  background-color: ${({ $Point }) => ($Point > 400 ? 'black' : 'none')};
   transition: 0.3s;
 `;
 
@@ -298,7 +300,7 @@ const HomeButton = styled.div`
   }
 `;
 
-const Fotter = styled.div`
+const Fotter = styled.div<{ $Point: number }>`
   position: fixed;
   bottom: 0;
   height: 60px;
@@ -310,7 +312,7 @@ const Fotter = styled.div`
   transition: 0.3s;
 `;
 
-const ForrterContent = styled.p`
+const ForrterContent = styled.p<{ $Point: number }>`
   display: ${({ $Point }) => ($Point > 400 ? 'grid' : 'none')};
   color: white;
   font-family: 'Dongle L';
@@ -321,7 +323,7 @@ const ForrterContent = styled.p`
   }
 `;
 
-const TopIcon = styled.div`
+const TopIcon = styled.div<{ $isDisplay: boolean }>`
   display: ${({ $isDisplay }) => ($isDisplay ? 'none' : 'flex')};
   align-items: center;
   justify-content: center;

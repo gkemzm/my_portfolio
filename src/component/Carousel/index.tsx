@@ -3,9 +3,15 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-const Carousel = ({ data, moveValue = 1 }) => {
+import { CarouselItemTypes } from './component.types';
+const Carousel = ({
+  data,
+  moveValue = 1,
+}: {
+  data: CarouselItemTypes;
+  moveValue: number;
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [length, setLength] = useState(data.length);
 
   // useEffect(() => {
   //   console.log('렌더링');
@@ -42,7 +48,7 @@ const Carousel = ({ data, moveValue = 1 }) => {
           transform: `translateX(-${(currentIndex * 100) / moveValue}%)`,
         }}
       >
-        {data.map((item, idx) => {
+        {data.map((item: CarouselItemTypes, idx: number) => {
           return (
             <ImageWrapper key={idx} $width={`${item.width}px`}>
               <Image
@@ -86,7 +92,7 @@ const TitleWithButton = styled.div`
   }
 `;
 
-const LeftButton = styled.button`
+const LeftButton = styled.button<{ curIndex: number }>`
   width: 60px;
   height: 24px;
   border: 1px solid black;
@@ -100,7 +106,7 @@ const LeftButton = styled.button`
   cursor: pointer;
 `;
 
-const RightButton = styled.button`
+const RightButton = styled.button<{ curIndex: number; totalLength: number }>`
   width: 60px;
   height: 24px;
   border: 1px solid black;
@@ -114,7 +120,7 @@ const RightButton = styled.button`
   cursor: pointer;
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.div<{ $width: string | number }>`
   position: relative;
   width: ${({ $width }) => $width && $width};
   height: 700px;

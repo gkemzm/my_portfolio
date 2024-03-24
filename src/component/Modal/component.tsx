@@ -9,7 +9,7 @@ import styled, { css } from 'styled-components';
 import ModalContent from './ModalContent';
 import { modalSizeStyles } from './style';
 import useLockedBody from '../../hooks/useScrollLock';
-
+import { ModalComponentTypes } from './component.types';
 const Component = ({
   size,
   isFull,
@@ -22,8 +22,9 @@ const Component = ({
   closeEvent,
   backEvent,
   noPadding = false,
-}) => {
+}: ModalComponentTypes) => {
   const [mount, setMount] = useState(false);
+  const [width, setWidth] = useState('400px');
   const [, setLocked] = useLockedBody();
 
   useEffect(() => {
@@ -31,8 +32,28 @@ const Component = ({
   }, []);
 
   useEffect(() => {
+    // @ts-ignore
     setLocked(isOpen);
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!size) return;
+    let width = '400px';
+
+    if (size === 'sm') {
+      width = '400px';
+    }
+    if (size === 'md') {
+      width = '600px';
+    }
+    if (size === 'lg') {
+      width = '800px';
+    }
+    if (size === 'xl') {
+      width = '1240px';
+    }
+    setWidth(width);
+  }, [size]);
 
   if (mount) {
     const portalElement = document.querySelector('#portal');
@@ -43,9 +64,9 @@ const Component = ({
 
     return createPortal(
       isOpen ? (
-        <Wrapper isFull={isFull}>
+        <Wrapper>
           <Backdrop onClick={onBackdropClick} />
-          <ModalBox size={size} isFull={isFull}>
+          <ModalBox $size={width} isFull={isFull}>
             <ModalContent
               title={title}
               content={content}
@@ -98,8 +119,11 @@ const Backdrop = styled.div`
   height: 100%;
 `;
 
-const ModalBox = styled.div`
-  ${({ size }) => modalSizeStyles[size]}
+const ModalBox = styled.div<{
+  isFull: boolean;
+  $size: string;
+}>`
+  width: ${({ $size }) => $size && $size};
   min-width: 200px;
   position: relative;
   z-index: 10002;
