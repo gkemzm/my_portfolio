@@ -4,6 +4,7 @@ import useModal from '@/hooks/useModal';
 import { Smaf } from './Project/smaf';
 import { Gel } from './Project/gel';
 import { KorlyMally } from './Project/korly';
+import { useMemo } from 'react';
 
 const info = {
   name: '박범수',
@@ -86,7 +87,7 @@ export const Carrer = () => {
           </ContentBox>
         </ContentBox>
       </ContentWrapper>
-
+      {/* @ts-ignore */}
       <SmafModalWrapper
         title={'SMAF'}
         buttons={[
@@ -97,26 +98,8 @@ export const Carrer = () => {
           },
         ]}
         content={<Smaf />}
-        size={''}
-        isFull={false}
-        children={undefined}
-        isOpen={false}
-        onBackdropClicked={undefined}
-        closeEvent={{
-          isClose: false,
-          onClick: function (): void {
-            throw new Error('Function not implemented.');
-          },
-        }}
-        backEvent={{
-          isBack: false,
-          onClick: function (): void {
-            throw new Error('Function not implemented.');
-          },
-        }}
-        noPadding={false}
       />
-
+      {/* @ts-ignore */}
       <GelModalWrapper
         title={'GEL'}
         buttons={[
@@ -127,26 +110,8 @@ export const Carrer = () => {
           },
         ]}
         content={<Gel />}
-        size={''}
-        isFull={false}
-        children={undefined}
-        isOpen={false}
-        onBackdropClicked={undefined}
-        closeEvent={{
-          isClose: false,
-          onClick: function (): void {
-            throw new Error('Function not implemented.');
-          },
-        }}
-        backEvent={{
-          isBack: false,
-          onClick: function (): void {
-            throw new Error('Function not implemented.');
-          },
-        }}
-        noPadding={false}
       />
-
+      {/* @ts-ignore */}
       <KorlyMallyModalWrapper
         title={'Korly Mally'}
         buttons={[
@@ -157,24 +122,6 @@ export const Carrer = () => {
           },
         ]}
         content={<KorlyMally />}
-        size={''}
-        isFull={false}
-        children={undefined}
-        isOpen={false}
-        onBackdropClicked={undefined}
-        closeEvent={{
-          isClose: false,
-          onClick: function (): void {
-            throw new Error('Function not implemented.');
-          },
-        }}
-        backEvent={{
-          isBack: false,
-          onClick: function (): void {
-            throw new Error('Function not implemented.');
-          },
-        }}
-        noPadding={false}
       />
     </Wrapper>
   );

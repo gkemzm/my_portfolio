@@ -1,13 +1,12 @@
 import { Inter } from 'next/font/google';
 import styled, { keyframes } from 'styled-components';
-import { FiChevronUp } from 'react-icons/fi';
+import { FiChevronUp, FiChevronsDown } from 'react-icons/fi';
 import { MenuButton } from '../component/menuButton';
 import { Profile } from '../component/profile';
 import { Technique } from '../component/technique';
 import { Carrer } from '../component/career';
 import { Contact } from '../component/contact';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { FiChevronsDown } from 'react-icons/fi';
 
 const menu = ['Profile', 'Stack', 'Career', 'Contact'];
 
