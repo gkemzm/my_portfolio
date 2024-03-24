@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { FiInstagram, FiUser, FiMail } from 'react-icons/fi';
 
 const info = {

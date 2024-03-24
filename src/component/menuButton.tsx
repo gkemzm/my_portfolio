@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { MenuButtenProps } from './component.types';
 
 export const MenuButton = ({

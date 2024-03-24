@@ -1,8 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
+import { useRef, useState } from 'react';
 
-import { MutableRefObject, useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
-
+import { sendForm } from '@emailjs/browser';
 export const Contact = () => {
   const formRef = useRef<null | string | HTMLFormElement>();
   const [submitData, setSubmitData] = useState({
@@ -16,22 +15,18 @@ export const Contact = () => {
     if (!formRef.current) return;
 
     e.preventDefault();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    emailjs
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      .sendForm('service_r882pyn', 'template_zcjxcvs', formRef.current, {
-        publicKey: 'zxtTqEkoxsrvcLhxu',
-      })
-      .then(
-        () => {
-          console.log('SUCCESS!');
-          setIsSuccess(true);
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-          setIsSuccess(false);
-        }
-      );
+    sendForm('service_r882pyn', 'template_zcjxcvs', formRef.current, {
+      publicKey: 'zxtTqEkoxsrvcLhxu',
+    }).then(
+      () => {
+        console.log('SUCCESS!');
+        setIsSuccess(true);
+      },
+      (error) => {
+        console.log('FAILED...', error.text);
+        setIsSuccess(false);
+      }
+    );
 
     e.currentTarget.reset();
   };

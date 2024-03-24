@@ -17,6 +17,7 @@ export default function useModal(size: string | number, isFull: boolean) {
   const handleBackdropClick = useCallback((e: MouseEvent) => {
     e.stopPropagation();
     close();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   /**
    *
@@ -52,6 +53,7 @@ export default function useModal(size: string | number, isFull: boolean) {
         {children}
       </Modal>
     ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [isOpen]
   );
 

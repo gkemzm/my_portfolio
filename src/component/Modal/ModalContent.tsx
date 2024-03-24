@@ -4,7 +4,7 @@
 
 import { FiChevronLeft, FiX } from 'react-icons/fi';
 
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 import { ModalContentTypes } from './component.types';
 const Component = ({

@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import Carousel from '../Carousel';
+import { styled } from 'styled-components';
 import Image from 'next/image';
 import { useState } from 'react';
 const webData = [

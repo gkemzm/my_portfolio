@@ -4,10 +4,10 @@
 
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import ModalContent from './ModalContent';
-import useLockedBody from '../../hooks/useScrollLock';
+// import useLockedBody from '../../hooks/useScrollLock';
 import { ModalComponentTypes } from './component.types';
 const Component = ({
   size,
@@ -24,17 +24,17 @@ const Component = ({
 }: ModalComponentTypes) => {
   const [mount, setMount] = useState(false);
   const [width, setWidth] = useState('400px');
-  const [, setLocked] = useLockedBody();
+  // const [, setLocked] = useLockedBody();
 
   useEffect(() => {
     setMount(true);
   }, []);
 
-  useEffect(() => {
-    // @ts-ignore
-    setLocked(isOpen);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   setLocked(isOpen);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   useEffect(() => {
     if (!size) return;

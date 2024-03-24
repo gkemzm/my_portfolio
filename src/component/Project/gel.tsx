@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import Carousel from '../Carousel';
 import Image from 'next/image';
 import { useState } from 'react';

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { CarouselItemTypes } from './component.types';
 const Carousel = ({

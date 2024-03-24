@@ -1,5 +1,4 @@
-import { Inter } from 'next/font/google';
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'styled-components';
 import { FiChevronUp, FiChevronsDown } from 'react-icons/fi';
 import { MenuButton } from '../component/menuButton';
 import { Profile } from '../component/profile';

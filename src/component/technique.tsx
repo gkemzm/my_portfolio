@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { useMemo, useRef, useState } from 'react';
-import styled from 'styled-components';
+import { useRef, useState } from 'react';
+import { styled } from 'styled-components';
 
 const stackImage = [
   {
