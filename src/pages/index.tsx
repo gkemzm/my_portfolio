@@ -110,7 +110,7 @@ export default function Home() {
         ))}
       </BtnWrapper>
     );
-  }, [positionY]);
+  }, [positionY, currentItem]);
 
   useEffect(() => {
     window.scrollTo({
